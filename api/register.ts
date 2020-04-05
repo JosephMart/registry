@@ -6,6 +6,7 @@ import { User } from "../src/entity/User";
 export default async (req: NowRequest, res: NowResponse): Promise<void> => {
   const connection = await createConnection({
     type: "mongodb",
+    database: "wedding",
     entities: [User],
     url: process.env.MONGODB_URL,
   });
