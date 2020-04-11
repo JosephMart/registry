@@ -2,6 +2,13 @@
   "name": "registry",
   "version": "0.0.1",
   "description": "Lambdas for Martinsen Wedding Registry.",
+  "scripts": {
+    "test": "jest",
+    "test-watch": "jest --watch",
+    "coverage": "jest --coverage",
+    "lint": "eslint '*/**/*.{js,ts}'",
+    "now:dev": "now dev"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/JosephMart/registry.git"
@@ -13,9 +20,18 @@
   },
   "homepage": "https://github.com/JosephMart/registry#readme",
   "devDependencies": {
-    "ts-node": "3.3.0",
-    "@types/node": "^8.0.29",
-    "typescript": "3.3.3333"
+    "@types/jest": "^25.2.1",
+    "@types/node": "12.12.6",
+    "@typescript-eslint/eslint-plugin": "^2.27.0",
+    "@typescript-eslint/parser": "^2.27.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-prettier": "^3.1.2",
+    "jest": "^25.3.0",
+    "prettier": "^2.0.4",
+    "ts-jest": "^25.3.1",
+    "ts-node": "8.8.2",
+    "typescript": "3.8.3"
   },
   "dependencies": {
     "@now/node": "^1.5.0",
