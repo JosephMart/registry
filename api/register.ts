@@ -3,8 +3,10 @@ import "reflect-metadata";
 
 import db from "../src/db";
 import getRSVPS from "../src/controllers/getRSVPS";
+import setHeaders from "../src/controllers/headers";
 
 export default async (req: NowRequest, res: NowResponse): Promise<void> => {
+  setHeaders(res);
   const connection = await db();
 
   console.log("Loading RSVP from the database...");
