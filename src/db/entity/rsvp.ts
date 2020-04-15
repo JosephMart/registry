@@ -6,8 +6,17 @@ export class RSVP {
   _id: ObjectID;
 
   @Column()
+  rsvpName: string;
+
+  @Column()
   firstName: string;
 
   @Column()
   lastName: string;
+
+  @Column()
+  family: string;
+
+  @Column()
+  head: boolean;
 }
