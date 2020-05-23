@@ -19,6 +19,7 @@ const getFiles = (p: string): string[] => {
 
 const handleFile = async (csv: string): Promise<RSVP[]> => {
   const data = fs.readFileSync(csv).toString();
+  // eslint-disable-next-line @typescript-eslint/camelcase
   const csvRecords = parse(data, { skip_empty_lines: true, from_line: 3 });
   const dbRecords: RSVP[] = [];
 
@@ -39,7 +40,7 @@ const handleFile = async (csv: string): Promise<RSVP[]> => {
   return dbRecords;
 };
 
-const commitToDB = async (records: RSVP[]) => {
+const commitToDB = async (records: RSVP[]): Promise<void> => {
   const connection = await (await db()).getRepository(RSVP);
 
   for (const rsvp of records) {
@@ -57,7 +58,7 @@ const commitToDB = async (records: RSVP[]) => {
   }
 };
 
-const main = async () => {
+const main = async (): Promise<void> => {
   const folderPath = process.argv[2];
   const csvFiles = getFiles(folderPath);
   const futures = [];

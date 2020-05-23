@@ -1,6 +1,6 @@
 import { NowResponse } from "@now/node";
 
-export default (res: NowResponse) => {
+export default (res: NowResponse): void => {
   [
     ["Access-Control-Allow-Origin", "*"],
     ["Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS"],
