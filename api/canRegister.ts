@@ -10,7 +10,6 @@ export default async (req: NowRequest, res: NowResponse): Promise<void> => {
   const connection = await db();
 
   console.log("Loading RSVP from the database...");
-  console.log(req.query);
   const rsvp = await getRSVP(connection, req.query.name as string);
   await connection.close();
   res.json({ success: rsvp !== undefined, rsvp });

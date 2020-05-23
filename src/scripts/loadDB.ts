@@ -29,11 +29,11 @@ const handleFile = async (csv: string): Promise<RSVP[]> => {
     const rsvpName = `${firstName} ${lastName}`.toUpperCase();
 
     const r = new RSVP();
-    r.family = record[Columns.Family];
-    r.firstName = firstName;
-    r.lastName = lastName;
-    r.rsvpName = rsvpName;
-    r.head = record[Columns.Head] === "1";
+    r.family = record[Columns.Family].trim();
+    r.firstName = firstName.trim();
+    r.lastName = lastName.trim();
+    r.rsvpName = rsvpName.trim();
+    r.head = record[Columns.Head].trim() === "1";
 
     dbRecords.push(r);
   }
