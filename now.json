@@ -1,5 +1,5 @@
 {
   "env": {
-    "MONGODB_URL": "@registry_typeorm_url"
+    "MONGODB_URL": "@WEDDING_DB"
   }
 }
