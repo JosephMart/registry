@@ -7,7 +7,8 @@
     "test-watch": "jest --watch",
     "coverage": "jest --coverage",
     "lint": "eslint '*/**/*.{js,ts}'",
-    "now:dev": "now dev"
+    "now:dev": "now dev",
+    "load": "ts-node src/scripts/loadDB.ts"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
     "@types/node": "12.12.6",
     "@typescript-eslint/eslint-plugin": "^2.27.0",
     "@typescript-eslint/parser": "^2.27.0",
+    "csv-parse": "^4.10.1",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.1",
     "eslint-plugin-prettier": "^3.1.2",
@@ -37,6 +39,6 @@
     "@now/node": "^1.5.0",
     "mongodb": "^3.0.8",
     "reflect-metadata": "^0.1.10",
-    "typeorm": "0.2.24"
+    "typeorm": "^0.2.25"
   }
 }
