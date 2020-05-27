@@ -21,4 +21,10 @@ export class Registered {
 
   @Column(type => RegisteredPerson)
   users: RegisteredPerson[];
+
+  @Column()
+  message: string;
+
+  @Column()
+  attending: boolean;
 }

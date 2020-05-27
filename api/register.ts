@@ -7,6 +7,7 @@ import setHeaders from "../src/controllers/headers";
 
 export default async (req: NowRequest, res: NowResponse): Promise<void> => {
   setHeaders(res);
+
   if (!req.body) {
     console.log("Register no op...");
     res.json({ success: false });
@@ -18,7 +19,7 @@ export default async (req: NowRequest, res: NowResponse): Promise<void> => {
   try {
     payload = req.body as RegisterPayload;
   } catch (e) {
-    res.json({ success: false, msg: "Malformed payload" });
+    res.json({ success: false, msg: "Looks like Joseph messed up..." });
     return;
   }
 
@@ -26,7 +27,16 @@ export default async (req: NowRequest, res: NowResponse): Promise<void> => {
 
   const connection = await db();
   const data = await register(connection, payload);
-
   await connection.close();
-  res.json({ success: true, data });
+
+  if (data === undefined) {
+    res.json({ success: false, data, msg: `Looks like Joseph messed up...` });
+    return;
+  }
+
+  res.json({
+    success: true,
+    data,
+    msg: `We Look forward to seeing you ${data.rsvpUser.firstName} ${data.rsvpUser.lastName}!`,
+  });
 };

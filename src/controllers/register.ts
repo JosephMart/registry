@@ -5,7 +5,9 @@ import { Registered, RegisteredPerson } from "../db/entity/registered";
 
 export type RegisterPayload = {
   rsvpName: string;
+  message: string;
   users: RegisteredPerson[];
+  attending: boolean;
 };
 
 export default async (connection: Connection, payload: RegisterPayload): Promise<Registered | undefined> => {
@@ -13,7 +15,9 @@ export default async (connection: Connection, payload: RegisterPayload): Promise
 
   const registered = new Registered();
   registered.rsvpUser = rsvp;
+  registered.message = payload.message;
   registered.users = payload.users;
+  registered.attending = payload.attending;
 
   return await connection.manager.save(registered);
 };
