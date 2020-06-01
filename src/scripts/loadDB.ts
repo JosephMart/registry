@@ -72,7 +72,7 @@ const main = async (): Promise<void> => {
   }
 
   const dbRecords = (await Promise.all(futures)).flat();
-  // await commitToDB(dbRecords);
+  await commitToDB(dbRecords);
 
   process.exit(0);
 };
