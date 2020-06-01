@@ -34,9 +34,13 @@ export default async (req: NowRequest, res: NowResponse): Promise<void> => {
     return;
   }
 
+  const msg = data.attending
+    ? `We look forward to seeing you ${data.rsvpUser.firstName} ${data.rsvpUser.lastName}!`
+    : `We appreciate you taking the time to respond!`;
+
   res.json({
     success: true,
     data,
-    msg: `We Look forward to seeing you ${data.rsvpUser.firstName} ${data.rsvpUser.lastName}!`,
+    msg,
   });
 };

@@ -13,10 +13,4 @@ export class RSVP {
 
   @Column()
   lastName: string;
-
-  @Column()
-  family: string;
-
-  @Column()
-  head: boolean;
 }
