@@ -2,13 +2,7 @@ import { Entity, ObjectIdColumn, ObjectID, Column } from "typeorm";
 import { RSVP } from "./rsvp";
 
 export class RegisteredPerson {
-  firstName: string;
-  lastName: string;
-  diet: {
-    vegetarian: boolean;
-    celiac: boolean;
-    diary: boolean;
-  };
+  name: string;
 }
 
 @Entity()
