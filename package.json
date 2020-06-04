@@ -37,6 +37,7 @@
   },
   "dependencies": {
     "@now/node": "^1.5.0",
+    "google-spreadsheet": "^3.0.11",
     "mongodb": "^3.0.8",
     "reflect-metadata": "^0.1.10",
     "typeorm": "^0.2.25"

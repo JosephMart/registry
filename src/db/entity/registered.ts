@@ -13,8 +13,8 @@ export class Registered {
   @Column(type => RSVP)
   rsvpUser: RSVP;
 
-  @Column(type => RegisteredPerson)
-  users: RegisteredPerson[];
+  @Column()
+  users: [{ name: string }];
 
   @Column()
   message: string;

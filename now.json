@@ -1,1 +1,7 @@
-{}
+{
+  "env": {
+    "SHEET_ID": "@SHEET_ID",
+    "WEDDING_DB": "@WEDDING_DB",
+    "GOOGLE_SHEET_PRIVATE_KEY": "@GOOGLE_SHEET_PRIVATE_KEY="
+  }
+}
