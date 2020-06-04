@@ -1,12 +1,12 @@
 import { Connection } from "typeorm";
 
 import { RSVP } from "../db/entity/rsvp";
-import { Registered, RegisteredPerson } from "../db/entity/registered";
+import { Registered } from "../db/entity/registered";
 
 export type RegisterPayload = {
   rsvpName: string;
   message: string;
-  users: RegisteredPerson[];
+  users: [{ name: string }];
   attending: boolean;
 };
 

@@ -1,10 +1,6 @@
 import { Entity, ObjectIdColumn, ObjectID, Column } from "typeorm";
 import { RSVP } from "./rsvp";
 
-export class RegisteredPerson {
-  name: string;
-}
-
 @Entity()
 export class Registered {
   @ObjectIdColumn()
