@@ -1,1 +1,1 @@
-declare module "google-spreadsheet"
+declare module "google-spreadsheet";

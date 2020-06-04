@@ -6,6 +6,7 @@ export class Registered {
   @ObjectIdColumn()
   _id: ObjectID;
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   @Column(type => RSVP)
   rsvpUser: RSVP;
 
