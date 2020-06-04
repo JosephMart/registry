@@ -7,14 +7,18 @@ import { Registered } from "../db/entity/registered";
  * Connect to the GoogleSheet document
  */
 const getSheet = async (): Promise<any> => {
+  console.log("Getting the GoogleSpreadsheet");
   const doc = new GoogleSpreadsheet(process.env.SHEET_ID);
 
+  console.log("Authing");
   await doc.useServiceAccountAuth({
     client_email: process.env.GOOGLE_SHEET_CLIENT_EMAIL,
     private_key: process.env.GOOGLE_SHEET_PRIVATE_KEY,
   });
 
+  console.log("Loading doc info");
   await doc.loadInfo();
+  console.log("Loaded doc info success");
   return doc;
 };
 
@@ -31,6 +35,7 @@ const getRegistrations = async (connection: Connection): Promise<Registered[]> =
  */
 export default async (connection: Connection): Promise<boolean> => {
   console.log("Starting to update GoogleSheet");
+  console.log(JSON.stringify(process.env));
 
   // Load all deps in async, entries from DB and GoogleSheet info
   const [registrations, doc]: [Registered[], any] = await Promise.all([getRegistrations(connection), getSheet()]);
