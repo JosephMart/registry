@@ -9,5 +9,5 @@ tmp/
 temp/
 coverage/
 loadDB.sh
-
+.env
 .vercel

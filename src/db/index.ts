@@ -8,6 +8,5 @@ export default (): Promise<Connection> =>
     type: "mongodb",
     database: "wedding",
     entities: [RSVP, Registered],
-    url: "mongodb+srv://r0s:loki@cluster0-j89nv.mongodb.net/wedding",
-    // url: process.env.WEDDING_DB,
+    url: process.env.WEDDING_DB,
   });
