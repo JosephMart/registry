@@ -18,6 +18,7 @@ export default async (connection: Connection, payload: RegisterPayload): Promise
   registered.message = payload.message;
   registered.users = payload.users;
   registered.attending = payload.attending;
+  registered.timestamp = new Date();
 
   return await connection.manager.save(registered);
 };

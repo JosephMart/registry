@@ -60,6 +60,7 @@ export default async (connection: Connection): Promise<boolean> => {
         Attending: attending,
         "Registered By": `${rsvpUser.firstName} ${rsvpUser.lastName}`,
         Message: r.message,
+        Timestamp: new Date(r.timestamp).toLocaleString("en-US", { timeZone: "America/Chicago" }),
       });
     }
   }

@@ -18,4 +18,7 @@ export class Registered {
 
   @Column()
   attending: boolean;
+
+  @Column()
+  timestamp: Date;
 }
