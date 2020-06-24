@@ -5,7 +5,7 @@ import http from "http";
 
 export default (req: NowRequest, res: NowResponse): void => {
   var options = {
-    host: "localhost",
+    host: "https://registry-git-google-sheet-background.josephmart.now.sh",
     port: 3000,
     path: "/api/updateSheet",
     // timeout: 3000,
@@ -23,6 +23,6 @@ export default (req: NowRequest, res: NowResponse): void => {
   r.on("error", function (e) {
     console.log("ERROR: " + e.message);
   });
-
+  console.log("HIT!");
   res.json({ response: true });
 };
