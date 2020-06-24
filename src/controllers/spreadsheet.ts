@@ -72,7 +72,6 @@ const getRegistrations = async (): Promise<[GoogleSheetRow[], Connection]> => {
     }
   }
 
-  // console.log(`Rows adding to GoogleSheet ${JSON.stringify(rowsToAdd)}`);
   return [rowsToAdd, connection];
 };
 
@@ -80,7 +79,6 @@ const getRegistrations = async (): Promise<[GoogleSheetRow[], Connection]> => {
  * Main handler for fetching Registered info from DB and updating GoogleSheet
  */
 export default async (): Promise<boolean> => {
-  console.log("Starting to update GoogleSheet");
   console.log(JSON.stringify(process.env));
 
   // Load all deps in async, entries from DB and GoogleSheet info
