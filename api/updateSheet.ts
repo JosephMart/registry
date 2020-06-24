@@ -13,6 +13,5 @@ export default async (req: NowRequest, res: NowResponse): Promise<void> => {
     const e = _e as Error;
     console.log(e.message);
   }
-  // await connection.close();
   res.json({ response: result });
 };
