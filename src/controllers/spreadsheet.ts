@@ -1,7 +1,17 @@
-import { Connection } from "typeorm";
+import { Connection, ObjectID } from "typeorm";
 import { GoogleSpreadsheet } from "google-spreadsheet";
 
 import { Registered } from "../db/entity/registered";
+import db from "../db";
+
+type GoogleSheetRow = {
+  ID: ObjectID;
+  Name: string;
+  Attending: number;
+  "Registered By": string;
+  Message: string;
+  Timestamp: string;
+};
 
 /**
  * Connect to the GoogleSheet document
@@ -22,27 +32,6 @@ const getSheet = async (): Promise<any> => {
   console.log("Loading doc info");
   await doc.loadInfo();
   console.log("Loaded doc info success");
-  return doc;
-};
-
-/**
- * Get all registrations from DB
- * @param connection Active DB connection
- */
-const getRegistrations = async (connection: Connection): Promise<Registered[]> => {
-  return await connection.manager.find(Registered);
-};
-
-/**
- * Main handler for fetching Registered info from DB and updating GoogleSheet
- */
-export default async (connection: Connection): Promise<boolean> => {
-  console.log("Starting to update GoogleSheet");
-  console.log(JSON.stringify(process.env));
-
-  // Load all deps in async, entries from DB and GoogleSheet info
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [registrations, doc]: [Registered[], any] = await Promise.all([getRegistrations(connection), getSheet()]);
 
   // First sheet is going to be "latest"
   const sheet = doc.sheetsByIndex[0];
@@ -51,6 +40,20 @@ export default async (connection: Connection): Promise<boolean> => {
   await sheet.loadHeaderRow();
   const headers = sheet.headerValues;
 
+  // Commit changes to the GoogleSheet with a full wipe+update
+  await sheet.clear();
+  await sheet.setHeaderRow(headers);
+  console.log("Done setting up sheet");
+  return sheet;
+};
+
+/**
+ * Get all registrations from DB
+ * @param connection Active DB connection
+ */
+const getRegistrations = async (): Promise<[GoogleSheetRow[], Connection]> => {
+  const connection = await db();
+  const registrations = await connection.manager.find(Registered);
   // Convert all Registered rows into GoogleSheet rows
   const rowsToAdd = [];
 
@@ -69,12 +72,22 @@ export default async (connection: Connection): Promise<boolean> => {
     }
   }
 
-  console.log(`Rows adding to GoogleSheet ${JSON.stringify(rowsToAdd)}`);
+  return [rowsToAdd, connection];
+};
 
-  // Commit changes to the GoogleSheet with a full wipe+update
-  await sheet.clear();
-  await sheet.setHeaderRow(headers);
-  await sheet.addRows(rowsToAdd);
+/**
+ * Main handler for fetching Registered info from DB and updating GoogleSheet
+ */
+export default async (): Promise<boolean> => {
+  console.log(JSON.stringify(process.env));
+
+  // Load all deps in async, entries from DB and GoogleSheet info
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [[rowsToAdd, connection], sheet]: [[GoogleSheetRow[], Connection], any] = await Promise.all([
+    getRegistrations(),
+    getSheet(),
+  ]);
+  await Promise.all([sheet.addRows(rowsToAdd), connection.close()]);
   console.log("Success updating GoogleSheet");
   return true;
 };
