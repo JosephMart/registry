@@ -72,7 +72,7 @@ const getRegistrations = async (): Promise<[GoogleSheetRow[], Connection]> => {
     }
   }
 
-  console.log(`Rows adding to GoogleSheet ${JSON.stringify(rowsToAdd)}`);
+  // console.log(`Rows adding to GoogleSheet ${JSON.stringify(rowsToAdd)}`);
   return [rowsToAdd, connection];
 };
 
