@@ -1,6 +1,6 @@
 {
   "name": "registry",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Lambdas for Martinsen Wedding Registry.",
   "scripts": {
     "test": "jest",
