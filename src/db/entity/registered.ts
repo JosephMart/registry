@@ -21,4 +21,7 @@ export class Registered {
 
   @Column()
   timestamp: Date;
+
+  @Column()
+  email: string;
 }
