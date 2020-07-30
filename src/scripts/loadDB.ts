@@ -52,11 +52,11 @@ const commitToDB = async (records: RSVP[]): Promise<void> => {
 
     try {
       await connection.manager.findOneOrFail(RSVP, criteria);
-      console.log(`Updating entity: ${rsvp.rsvpName}`);
-      await connection.manager.update(RSVP, criteria, rsvp);
+      // console.log(`Updating entity: ${rsvp.rsvpName}`);
+      // await connection.manager.update(RSVP, criteria, rsvp);
     } catch (_e) {
       const e = _e as Error;
-      console.log(`Entity does not exist for: ${rsvp.rsvpName}: ${e.message}`);
+      console.log(`New RSVP ENTRY: ${rsvp.rsvpName}`);
       await connection.manager.save(RSVP, rsvp);
     }
   }

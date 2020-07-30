@@ -10,6 +10,7 @@ type GoogleSheetRow = {
   Attending: number;
   "Registered By": string;
   Message: string;
+  Email: string;
   Timestamp: string;
 };
 
@@ -67,6 +68,7 @@ const getRegistrations = async (): Promise<[GoogleSheetRow[], Connection]> => {
         Attending: attending,
         "Registered By": `${rsvpUser.firstName} ${rsvpUser.lastName}`,
         Message: r.message,
+        Email: r.email,
         Timestamp: new Date(r.timestamp).toLocaleString("en-US", { timeZone: "America/Chicago" }),
       });
     }

@@ -8,6 +8,7 @@ export type RegisterPayload = {
   message: string;
   users: [{ name: string }];
   attending: boolean;
+  email: string;
 };
 
 export default async (connection: Connection, payload: RegisterPayload): Promise<Registered | undefined> => {
@@ -18,6 +19,7 @@ export default async (connection: Connection, payload: RegisterPayload): Promise
   registered.message = payload.message;
   registered.users = payload.users;
   registered.attending = payload.attending;
+  registered.email = payload.email;
   registered.timestamp = new Date();
 
   return await connection.manager.save(registered);
