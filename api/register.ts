@@ -1,11 +1,11 @@
 import "reflect-metadata";
-import { NowRequest, NowResponse } from "@now/node";
+import { VercelRequest, VercelResponse } from "@vercel/node";
 
 import db from "../src/db";
 import register, { RegisterPayload } from "../src/controllers/register";
 import setHeaders from "../src/controllers/headers";
 
-export default async (req: NowRequest, res: NowResponse): Promise<void> => {
+export default async (req: VercelRequest, res: VercelResponse): Promise<void> => {
   setHeaders(res);
 
   if (!req.body) {
