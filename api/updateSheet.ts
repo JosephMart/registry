@@ -1,9 +1,9 @@
-import { NowRequest, NowResponse } from "@now/node";
+import { VercelRequest, VercelResponse } from "@vercel/node";
 
 import updateSheet from "../src/controllers/spreadsheet";
 import setHeaders from "../src/controllers/headers";
 
-export default async (req: NowRequest, res: NowResponse): Promise<void> => {
+export default async (req: VercelRequest, res: VercelResponse): Promise<void> => {
   setHeaders(res);
 
   let result = false;

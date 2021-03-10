@@ -7,7 +7,7 @@
     "test-watch": "jest --watch",
     "coverage": "jest --coverage",
     "lint": "eslint '*/**/*.{js,ts}'",
-    "now:dev": "now dev",
+    "vercel:dev": "vercel dev",
     "load": "ts-node src/scripts/loadDB.ts"
   },
   "repository": {
@@ -21,25 +21,25 @@
   },
   "homepage": "https://github.com/JosephMart/registry#readme",
   "devDependencies": {
-    "@types/jest": "^25.2.1",
+    "@types/jest": "^25.2.3",
     "@types/node": "12.12.6",
-    "@typescript-eslint/eslint-plugin": "^2.27.0",
-    "@typescript-eslint/parser": "^2.27.0",
-    "csv-parse": "^4.10.1",
+    "@typescript-eslint/eslint-plugin": "^2.34.0",
+    "@typescript-eslint/parser": "^2.34.0",
+    "csv-parse": "^4.15.3",
     "eslint": "^6.8.0",
-    "eslint-config-prettier": "^6.10.1",
-    "eslint-plugin-prettier": "^3.1.2",
-    "jest": "^25.3.0",
-    "prettier": "^2.0.4",
-    "ts-jest": "^25.3.1",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "jest": "^25.5.4",
+    "prettier": "^2.2.1",
+    "ts-jest": "^25.5.1",
     "ts-node": "8.8.2",
     "typescript": "3.8.3"
   },
   "dependencies": {
-    "@now/node": "^1.6.1",
-    "google-spreadsheet": "^3.0.11",
-    "mongodb": "^3.0.8",
+    "@vercel/node": "^1.9.1",
+    "google-spreadsheet": "^3.1.15",
+    "mongodb": "^3.6.4",
     "reflect-metadata": "^0.1.10",
-    "typeorm": "^0.2.25"
+    "typeorm": "^0.2.31"
   }
 }

@@ -1,6 +1,6 @@
-import { NowResponse } from "@now/node";
+import { VercelResponse } from "@vercel/node";
 
-export default (res: NowResponse): void => {
+export default (res: VercelResponse): void => {
   [
     ["Access-Control-Allow-Origin", "*"],
     ["Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS"],

@@ -1,11 +1,11 @@
-import { NowRequest, NowResponse } from "@now/node";
+import { VercelRequest, VercelResponse } from "@vercel/node";
 import "reflect-metadata";
 
 import db from "../src/db";
 import getRSVP from "../src/controllers/getRSVP";
 import setHeaders from "../src/controllers/headers";
 
-export default async (req: NowRequest, res: NowResponse): Promise<void> => {
+export default async (req: VercelRequest, res: VercelResponse): Promise<void> => {
   setHeaders(res);
   const connection = await db();
 
